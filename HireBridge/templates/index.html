@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HireBridge</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <div class="logo-box">
+            💼
+        </div>
+
+        <h2>
+            Hire<span>Bridge</span>
+        </h2>
+
+    </div>
+
+</nav>
+
+<div class="container">
+
+    <div class="page-center">
+
+        <div class="card" style="max-width:1000px;width:100%;">
+
+            <div style="
+                display:flex;
+                justify-content:center;
+                margin-bottom:25px;
+            ">
+                
+
+            </div>
+
+            <h1 class="hero-title"
+                style="text-align:center;margin-bottom:20px;">
+
+                Welcome to
+
+                <span class="gradient">
+                    HireBridge
+                </span>
+
+            </h1>
+
+            <p class="hero-subtitle"
+               style="
+               text-align:center;
+               max-width:700px;
+               margin:0 auto 50px;
+               ">
+
+                Connect talented students with top recruiters.
+                Apply for opportunities, track applications,
+                and manage hiring in one place.
+
+            </p>
+
+            <div class="option-grid">
+
+                <a href="/student_login"
+                   class="option-card">
+
+                    <div style="
+                    display:flex;
+                    justify-content:space-between;
+                    align-items:center;
+                    margin-bottom:25px;
+                    ">
+
+                        <div class="option-icon student-icon">
+                            🎓
+                        </div>
+
+                        <div style="font-size:28px;">
+                            →
+                        </div>
+
+                    </div>
+
+                    <h3>
+                        Student Portal
+                    </h3>
+
+                    <p>
+                        Explore companies,
+                        submit applications,
+                        and monitor your placement progress.
+                    </p>
+
+                </a>
+
+                <a href="/company_login"
+                   class="option-card">
+
+                    <div style="
+                    display:flex;
+                    justify-content:space-between;
+                    align-items:center;
+                    margin-bottom:25px;
+                    ">
+
+                        <div class="option-icon company-icon">
+                            🏢
+                        </div>
+
+                        <div style="font-size:28px;">
+                            →
+                        </div>
+
+                    </div>
+
+                    <h3>
+                        Company Portal
+                    </h3>
+
+                    <p>
+                        Review candidates,
+                        shortlist applicants,
+                        and manage recruitment efficiently.
+                    </p>
+
+                </a>
+
+            </div>
+
+            <div class="center-link"
+                 style="margin-top:40px;">
+
+                New Student?
+
+                <a href="/student_signup">
+                    Create Account
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

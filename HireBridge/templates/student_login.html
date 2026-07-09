@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+
+<div class="page-center">
+    <div class="card">
+        <h1>Student Login</h1>
+        <p>Access your placement dashboard</p>
+
+        <form method="POST">
+            <input name="username" placeholder="Username" required>
+            <input name="password" type="password" placeholder="Password" required>
+            <button class="btn-primary">Login</button>
+        </form>
+
+        <p style="margin-top:12px;font-size:13px">
+            New student? <a href="/student_signup" style="color:#60a5fa">Create account</a>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

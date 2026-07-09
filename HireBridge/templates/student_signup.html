@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Signup</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <div class="logo-box">
+            🎓
+        </div>
+
+        <h2>
+            Hire<span>Bridge</span>
+        </h2>
+
+    </div>
+
+</nav>
+
+<div class="container">
+
+<div class="card form-card">
+
+<div class="form-title">
+
+<h2>Student Signup</h2>
+
+<p>Create your HireBridge account.</p>
+
+</div>
+
+<form method="POST">
+
+<div class="form-grid">
+
+<div class="input-group">
+<label>Username</label>
+<input name="username" required>
+</div>
+
+<div class="input-group">
+<label>Password</label>
+<input type="password" name="password" required>
+</div>
+
+<div class="input-group">
+<label>CGPA</label>
+<input name="cgpa" required>
+</div>
+
+<div class="input-group">
+<label>Attendance %</label>
+<input name="attendance" required>
+</div>
+
+<div class="input-group">
+<label>Email</label>
+<input type="email" name="email" required>
+</div>
+
+<div class="input-group">
+<label>Phone</label>
+<input name="phone" required>
+</div>
+
+<div class="input-group full">
+<label>Skills</label>
+<input name="skills" required>
+</div>
+
+<div class="input-group">
+<label>Graduation Year</label>
+
+<select name="year">
+
+<option>2026</option>
+<option>2027</option>
+<option>2028</option>
+<option>2029</option>
+
+</select>
+
+</div>
+
+</div>
+
+<button class="btn">
+Register
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>

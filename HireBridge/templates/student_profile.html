@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Profile | HireBridge</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">HireBridge</div>
+    <div class="nav-links">
+        <a href="/student_dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+<div class="container">
+    <h1>My Profile</h1>
+
+    <div class="card">
+        <p><strong>Username:</strong> {{ username }}</p>
+        <p><strong>CGPA:</strong> {{ cgpa }}</p>
+        <p><strong>Attendance:</strong> {{ attendance }}%</p>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Company Dashboard | HireBridge</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <div class="logo-box">
+            🏢
+        </div>
+
+        <h2>
+            Hire<span>Bridge</span>
+        </h2>
+
+    </div>
+
+    <a href="/logout" class="logout">
+        Logout
+    </a>
+
+</nav>
+
+<div class="container">
+
+    <div class="dashboard-header">
+
+        <div>
+
+            <div class="welcome">
+                Company Dashboard
+            </div>
+
+            <h1 style="
+                font-size:48px;
+                margin-top:5px;
+            ">
+                {{ company_name }}
+            </h1>
+
+            <p style="
+                color:#94a3b8;
+                margin-top:10px;
+            ">
+                Review applications and manage recruitment efficiently.
+            </p>
+
+        </div>
+
+        <div class="stats-row">
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    Total Applicants
+                </div>
+
+                <div class="stat-value">
+                    {{ total }}
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    Approved
+                </div>
+
+                <div class="stat-value"
+                     style="color:#10b981;">
+
+                    {{ approved }}
+
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    Rejected
+                </div>
+
+                <div class="stat-value"
+                     style="color:#ef4444;">
+
+                    {{ rejected }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div style="
+        margin-bottom:30px;
+    ">
+
+        <h2 style="
+            font-size:38px;
+            margin-bottom:10px;
+        ">
+            Applicants
+        </h2>
+
+        <p style="
+            color:#94a3b8;
+        ">
+            Review student profiles and update application status.
+        </p>
+
+    </div>
+
+    <div class="card table-card">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Applicant</th>
+                    <th>Email</th>
+                    <th>CGPA</th>
+                    <th>Attendance</th>
+                    <th>Status</th>
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for applicant in applicants %}
+
+                <tr>
+
+                    <td>
+
+                        <div class="user-cell">
+
+                            <div class="avatar">
+
+                                {% if applicant.name %}
+                                    {{ applicant.name[0] }}
+                                {% else %}
+                                    S
+                                {% endif %}
+
+                            </div>
+
+                            <div>
+
+                                <div style="
+                                    font-weight:700;
+                                    font-size:17px;
+                                ">
+                                    {{ applicant.name }}
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                    <td>
+
+                        {% if applicant.email %}
+                            {{ applicant.email }}
+                        {% else %}
+                            -
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+                        {{ applicant.cgpa }}
+                    </td>
+
+                    <td>
+                        {{ applicant.attendance }}%
+                    </td>
+
+                    <td>
+
+                        {% if applicant.status == "APPROVED" %}
+
+                            <span class="badge badge-approved">
+                                APPROVED
+                            </span>
+
+                        {% elif applicant.status == "REJECTED" %}
+
+                            <span class="badge badge-rejected">
+                                REJECTED
+                            </span>
+
+                        {% else %}
+
+                            <span class="badge badge-pending">
+                                PENDING
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        {% if applicant.status == "PENDING" %}
+
+                        <div style="
+                            display:flex;
+                            gap:10px;
+                            flex-wrap:wrap;
+                        ">
+
+                            <form method="POST"
+                                  action="/update_application">
+
+                                <input
+                                    type="hidden"
+                                    name="application_id"
+                                    value="{{ applicant.application_id }}">
+
+                                <input
+                                    type="hidden"
+                                    name="action"
+                                    value="APPROVED">
+
+                                <button
+                                    type="submit"
+                                    class="btn-accept">
+
+                                    Accept
+
+                                </button>
+
+                            </form>
+
+                            <form method="POST"
+                                  action="/update_application">
+
+                                <input
+                                    type="hidden"
+                                    name="application_id"
+                                    value="{{ applicant.application_id }}">
+
+                                <input
+                                    type="hidden"
+                                    name="action"
+                                    value="REJECTED">
+
+                                <button
+                                    type="submit"
+                                    class="btn-reject">
+
+                                    Reject
+
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                        {% else %}
+
+                        <form method="POST"
+                              action="/update_application">
+
+                            <input
+                                type="hidden"
+                                name="application_id"
+                                value="{{ applicant.application_id }}">
+
+                            <input
+                                type="hidden"
+                                name="action"
+                                value="PENDING">
+
+                            <button
+                                type="submit"
+                                class="btn-reset">
+
+                                Reset
+
+                            </button>
+
+                        </form>
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
